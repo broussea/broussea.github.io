@@ -25,6 +25,61 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+
+  <script>
+
+    var QueryString = function () {
+      // This function is anonymous, is executed immediately and 
+      // the return value is assigned to QueryString!
+      var query_string = {};
+      var query = window.location.search.substring(1);
+      var vars = query.split("&");
+      for (var i=0;i<vars.length;i++) {
+        var pair = vars[i].split("=");
+            // If first entry with this name
+        if (typeof query_string[pair[0]] === "undefined") {
+          query_string[pair[0]] = decodeURIComponent(pair[1]);
+            // If second entry with this name
+        } else if (typeof query_string[pair[0]] === "string") {
+          var arr = [ query_string[pair[0]],decodeURIComponent(pair[1]) ];
+          query_string[pair[0]] = arr;
+            // If third or later entry with this name
+        } else {
+          query_string[pair[0]].push(decodeURIComponent(pair[1]));
+        }
+      } 
+      return query_string;
+    }();
+
+    window.onload = function () {
+        switch ( QueryString.item ) {
+            case "undefined":
+                break;
+            case "meuble":
+                document.getElementById('inputParticipation').value="meuble";
+                document.getElementById('inputMontant').value="50€";
+                break;
+            case "deco":
+                document.getElementById('inputParticipation').value="deco";
+                document.getElementById('inputMontant').value="25€";
+                break;
+            case "travaux":
+                document.getElementById('inputParticipation').value="travaux";
+                document.getElementById('inputMontant').value="100€";
+                break;
+            case "vaisselle":
+                document.getElementById('inputParticipation').value="vaisselle";
+                document.getElementById('inputMontant').value="75€";
+                break;
+            default:
+                document.getElementById('inputParticipation').value="meuble";
+                document.getElementById('inputMontant').value="50€";
+        }
+    };
+
+  </script>
+
   </head>
 
   <body>
@@ -35,7 +90,7 @@
 
         <div class="cover-container">
 
-          <div class="masthead clearfix">
+          <div class="masthead clearfix" data-spy="affix" data-offset-top="50">
             <div class="inner">
               <h3 class="masthead-brand">Géraldine & Bertrand</h3>
               <nav>
@@ -79,10 +134,10 @@
     <label for="inputParticipation" class="col-sm-2 control-label">Votre participation</label>
     <div class="col-sm-10">
         <select class="form-control" id="inputParticipation" name="participation">
-          <option>Mobilier</option>
-          <option>Décoration</option>
-          <option>Travaux</option>
-          <option>Vaisselle</option>
+          <option value="meuble">Mobilier</option>
+          <option value="deco">Décoration</option>
+          <option value="travaux">Travaux</option>
+          <option value="vaisselle">Vaisselle</option>
         </select>
     </div>
   </div>

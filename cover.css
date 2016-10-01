@@ -138,6 +138,20 @@ a.btn
     color : white !important;
 }
 
+.affix {
+    background-color : rgba(69,69,69,0.95);
+    -webkit-transition: background-color 1s; /* Safari */
+    transition: background-color 1s;
+    z-index: 10;
+}
+
+.affix-top {
+    background-color : rgba(0,0,0,0);
+    -webkit-transition: background-color 1s; /* Safari */
+    transition: background-color 1s;
+    z-index: 10;
+}
+
 .content a,
 .content a:focus,
 .content a:hover
