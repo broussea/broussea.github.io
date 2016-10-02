@@ -143,6 +143,15 @@ a.btn
     -webkit-transition: background-color 1s; /* Safari */
     transition: background-color 1s;
     z-index: 10;
+    top: 0;
+    width: 100%;
+}
+
+.affix>div.inner {
+    padding : 0 20px;
+    margin  : 0;
+    -webkit-transition: padding 1s; /* Safari */
+    transition: padding 1s;
 }
 
 .affix-top {
