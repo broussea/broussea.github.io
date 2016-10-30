@@ -118,7 +118,7 @@ body {
 {
   background-color : #fff;
   margin-top       : 120px;
-  padding          : 20px;
+  padding          : 20px 50px;
   color            : #0C090A;
   text-shadow      : 0 1px 3px rgba(0,0,0,.2);
 }
@@ -126,6 +126,23 @@ body {
 .content h1
 {
     margin: 50px 0px;
+}
+
+.btn-liste {
+  width : 200px;
+}
+
+.liste-icon {
+  width         : 250px;
+  max-height    : 150px;
+  -o-object-fit : contain;
+  object-fit    : contain;
+}
+
+p.intro {
+  max-width: 500px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .liste-container h3
@@ -184,7 +201,7 @@ a.btn
 .liste-container
 {
     text-align : justify;
-    padding    : 0 50px;
+    padding    : 0 0px;
 }
 
 .liste-item-icon img
@@ -258,6 +275,6 @@ a.btn
   .masthead,
   .mastfoot,
   .cover-container {
-    width: 1000px;
+    width: 800px;
   }
 }

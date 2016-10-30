@@ -26,11 +26,10 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-
   <script>
 
     var QueryString = function () {
-      // This function is anonymous, is executed immediately and 
+      // This function is anonymous, is executed immediately and
       // the return value is assigned to QueryString!
       var query_string = {};
       var query = window.location.search.substring(1);
@@ -48,35 +47,83 @@
         } else {
           query_string[pair[0]].push(decodeURIComponent(pair[1]));
         }
-      } 
+      }
       return query_string;
     }();
 
-    window.onload = function () {
+    function validateEmail(email) {
+      var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(email);
+    }
+
+    function validate() {
+      document.getElementById('result').value.text("");
+      var email = document.getElementById('inputEmail3').value.val();
+      if (validateEmail(email)) {
+      } else {
+        document.getElementById('result').value.text("L'adresse électronique n'est pas correcte.");
+        document.getElementById('result').value.css("color", "red");
+      }
+      return false;
+    }
+
+    var updateFields = function () {
+        var price = 0;
+        console.log(QueryString.item);
         switch ( QueryString.item ) {
             case "undefined":
                 break;
-            case "meuble":
-                document.getElementById('inputParticipation').value="meuble";
-                document.getElementById('inputMontant').value="50€";
+            case "ameublement-table-wood-lo":
+                price=75;
                 break;
-            case "deco":
-                document.getElementById('inputParticipation').value="deco";
-                document.getElementById('inputMontant').value="25€";
+            case "ameublement-chaise":
+                price=50;
                 break;
-            case "travaux":
-                document.getElementById('inputParticipation').value="travaux";
-                document.getElementById('inputMontant').value="100€";
+            case "ameublement-fauteuil-biblio":
+                price=250;
                 break;
-            case "vaisselle":
-                document.getElementById('inputParticipation').value="vaisselle";
-                document.getElementById('inputMontant').value="75€";
+            case "ameublement-tv":
+                price=100;
+                break;
+            case "ameublement-bac-potager":
+                price=30;
+                break;
+            case "ameublement-lampe-trepied":
+                price=125;
+                break;
+            case "ameublement-machine-pain":
+                price=85;
+                break;
+            case "ameublement-livres":
+                price=15;
+                break;
+            case "ameublement-table-sam":
+                price=120;
+                break;
+            case "ameublement-vase":
+                price=25;
+                break;
+            case "ameublement-velo-ge":
+                price=230;
+                break;
+            case "ameublement-velo-bert":
+                price=200;
+                break;
+            case "ameublement-lustre":
+                price=130;
+                break;
+            case "ameublement-rechaud":
+                price=25;
                 break;
             default:
-                document.getElementById('inputParticipation').value="meuble";
-                document.getElementById('inputMontant').value="50€";
+                QueryString.item="Indéfini"
+                price=1;
         }
+        document.getElementById('inputParticipation').value=QueryString.item;
+        document.getElementById('inputMontant').value=price*parseInt(document.getElementById('inputQuantity').value)+"€";
     };
+
+    window.onload = updateFields;
 
   </script>
 
@@ -114,38 +161,55 @@
 
 <div class="liste-container">
 
-<form class="form-horizontal" action="https://formspree.io/bertrand.rousseau@gmail.com" method="POST">
+<form class="form-horizontal" id="formOffrir" action="https://formspree.io/bertrand.rousseau@gmail.com" method="POST">
 
   <div class="form-group">
     <label for="inputName" class="col-sm-2 control-label">Votre Nom</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputName" placeholder="Nom" name="nom">
+      <input type="text" class="form-control" id="inputName" placeholder="Nom" name="nom" required>
     </div>
   </div>
 
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label">Votre Email</label>
     <div class="col-sm-10">
-      <input type="email" class="form-control" id="inputEmail3" placeholder="Email" name="_replyto">
+      <input type="email" class="form-control" id="inputEmail3" placeholder="Email" name="_replyto" required >
     </div>
   </div>
 
   <div class="form-group">
     <label for="inputParticipation" class="col-sm-2 control-label">Votre participation</label>
     <div class="col-sm-10">
-        <select class="form-control" id="inputParticipation" name="participation">
-          <option value="meuble">Mobilier</option>
-          <option value="deco">Décoration</option>
-          <option value="travaux">Travaux</option>
-          <option value="vaisselle">Vaisselle</option>
+        <select class="form-control" id="inputParticipation" name="participation" onchange="updateFields()" required >
+          <option value="ameublement-table-wood-lo">Table 'Versailles' by Wood-Lo</option>
+          <option value="ameublement-chaise">Chaise salle à manger</option>
+          <option value="ameublement-fauteuil-biblio">Fauteuil pour la bibliothèque</option>
+          <option value="ameublement-tv">Télévision cathodique</option>
+          <option value="ameublement-bac-potager">Bac pour potager</option>
+          <option value="ameublement-lampe-trepied">Lampe trépied de campagne</option>
+          <option value="ameublement-machine-pain">Four à pain Philips</option>
+          <option value="ameublement-livres">De beaux livres pour notre bibliothèque</option>
+          <option value="ameublement-table-sam">Table "LO I" by Wood-Lo</option>
+          <option value="ameublement-vase">Vase</option>
+          <option value="ameublement-velo-ge">Vélo pour Géraldine</option>
+          <option value="ameublement-velo-bert">Vélo pour Bertrand</option>
+          <option value="ameublement-lustre">Lustre pour la salle à manger</option>
+          <option value="ameublement-rechaud">Réchaud électrique d'appoint</option>
         </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="inputQuantity" class="col-sm-2 control-label">Quantité</label>
+    <div class="col-sm-10">
+      <input type="number" class="form-control" id="inputQuantity" name="quantiy" value="1" onchange="updateFields()" required >
     </div>
   </div>
 
   <div class="form-group">
     <label for="inputMontant" class="col-sm-2 control-label">Montant total</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputMontant" placeholder="0,00€" name="montant">
+      <input type="text" class="form-control" id="inputMontant" placeholder="0,00€" name="montant" required >
     </div>
   </div>
 
@@ -156,12 +220,24 @@
     </div>
   </div>
 
+  <hr/>
+
+  <div class="form-group">
+    <label for="inputMessage" class="col-sm-6 control-label">Merci de verser le montant sur le compte suivant:</label>
+    <div class="col-sm-6">
+      <input type="text" name="_replyto" value="BE11 7320 4167 9537" readonly/>
+    </div>
+  </div>
+
+  <hr/>
+
   <input type="hidden" name="_next" value="http://www.geraldine-et-bertrand.com/merci.html" />
   <input type="hidden" name="_subject" value="Nouvelle participation!" />
   <input type="hidden" name="_format" value="plain" />
   <input type="text" name="_gotcha" style="display:none" />
 
   <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10" id="result"></div>
     <div class="col-sm-offset-2 col-sm-10">
       <button type="submit" class="btn btn-primary btn-lg">Envoyer</button>
     </div>
@@ -208,4 +284,3 @@
     <script src="bootstrap/assets/js/ie10-viewport-bug-workaround.js"></script>
   </body>
 </html>
-
