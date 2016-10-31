@@ -161,26 +161,26 @@
 
 <div class="liste-container">
 
-<form class="form-horizontal" id="formOffrir" action="https://formspree.io/bertrand.rousseau@gmail.com" method="POST">
+<form class="form-horizontal" id="gform" action="https://script.google.com/macros/s/AKfycbzElSWhet4BEtzFpdS6eP4fYd8wYo_yweumcWOtovMFRsiIrHLC/exec" method="POST">
 
   <div class="form-group">
     <label for="inputName" class="col-sm-2 control-label">Votre Nom</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputName" placeholder="Nom" name="Nom" required>
+      <input type="text" class="form-control" id="inputName" placeholder="Nom" name="name" required>
     </div>
   </div>
 
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label">Votre Email</label>
     <div class="col-sm-10">
-      <input type="email" class="form-control" id="inputEmail3" placeholder="Email" name="_cc" required >
+      <input type="email" class="form-control" id="inputEmail3" placeholder="Email" name="email" required >
     </div>
   </div>
 
   <div class="form-group">
     <label for="inputParticipation" class="col-sm-2 control-label">Votre participation</label>
     <div class="col-sm-10">
-        <select class="form-control" id="inputParticipation" name="Votre participation" onchange="updateFields()" required >
+        <select class="form-control" id="inputParticipation" name="gift" onchange="updateFields()" required >
           <option value="ameublement-table-wood-lo">Table 'Versailles' by Wood-Lo</option>
           <option value="ameublement-chaise">Chaise salle à manger</option>
           <option value="ameublement-fauteuil-biblio">Fauteuil pour la bibliothèque</option>
@@ -202,39 +202,25 @@
   <div class="form-group">
     <label for="inputQuantity" class="col-sm-2 control-label">Quantité</label>
     <div class="col-sm-10">
-      <input type="number" class="form-control" id="inputQuantity" name="Quantité" value="1" onchange="updateFields()" required >
+      <input type="number" class="form-control" id="inputQuantity" name="quantity" value="1" onchange="updateFields()" required >
     </div>
   </div>
 
   <div class="form-group">
     <label for="inputMontant" class="col-sm-2 control-label">Montant total</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputMontant" placeholder="0,00€" name="Montant total" required >
+      <input type="text" class="form-control" id="inputMontant" placeholder="0,00€" name="amount" required >
     </div>
   </div>
 
   <div class="form-group">
     <label for="inputMessage" class="col-sm-2 control-label">Votre message</label>
     <div class="col-sm-10">
-        <textarea class="form-control" rows="3" id="inputMessage" name="Votre message" placeholder="Vous pouvez nous écrire un petit message si vous le souhaitez!"></textarea>
+        <textarea class="form-control" rows="3" id="inputMessage" name="message" placeholder="Vous pouvez nous écrire un petit message si vous le souhaitez!"></textarea>
     </div>
   </div>
 
   <hr/>
-
-  <div class="form-group">
-    <label for="inputMessage" class="col-sm-6 control-label">Merci de verser le montant sur le compte suivant:</label>
-    <div class="col-sm-6">
-      <input type="text" name="Numéro de compte" value="BE11 7320 4167 9537" readonly/>
-    </div>
-  </div>
-
-  <hr/>
-
-  <input type="hidden" name="_next" value="http://www.geraldine-et-bertrand.com/merci.html" />
-  <input type="hidden" name="_subject" value="Résumé de votre promesse de cadeau" />
-  <input type="hidden" name="_format" value="plain" />
-  <input type="text" name="_gotcha" style="display:none" />
 
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10" id="result"></div>
