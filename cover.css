@@ -38,7 +38,7 @@ body {
 body {
   color: #fff;
   text-align: center;
-  text-shadow: 0 1px 3px rgba(0,0,0,.5);
+
 }
 
 /* Extra markup and styles for table-esque vertical and horizontal centering */
@@ -120,7 +120,6 @@ body {
   margin-top       : 120px;
   padding          : 20px 50px;
   color            : #0C090A;
-  text-shadow      : 0 1px 3px rgba(0,0,0,.2);
 }
 
 .content h1
